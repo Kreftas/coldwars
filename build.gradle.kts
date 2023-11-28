@@ -5,6 +5,7 @@ plugins {
   kotlin("jvm")
   id("org.springframework.boot") version "3.2.0"
   id("org.jetbrains.compose")
+  kotlin("plugin.serialization")
 }
 
 group = "me.ionas"
@@ -40,6 +41,8 @@ dependencies {
   implementation("jakarta.websocket:jakarta.websocket-api:$jakartaVersion")
   // https://mvnrepository.com/artifact/org.glassfish.tyrus.bundles/tyrus-standalone-client
   implementation("org.glassfish.tyrus.bundles:tyrus-standalone-client:2.1.4")
+  implementation("org.jetbrains.kotlinx:kotlinx-serialization-json:1.6.0")
+
 }
 
 compose.desktop {

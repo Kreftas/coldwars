@@ -12,6 +12,7 @@ import cafe.adriel.voyager.navigator.Navigator
 import ui.AppTheme
 import views.menu.MenuScreen
 import views.test.CityTestScreen
+import views.test.SocketTest
 import views.test.TradeRowTestScreen
 
 @Composable
@@ -21,7 +22,7 @@ fun App() {
      color = MaterialTheme.colorScheme.surface,
      modifier = Modifier.fillMaxSize()
    ) {
-     Navigator(MenuScreen)
+     Navigator(SocketTest)
    }
   }
 }
@@ -31,10 +32,10 @@ fun main() = application {
     undecorated = false,
     onCloseRequest = ::exitApplication,
     title = "Cold wars",
-    state = WindowState(
-      size = DpSize.Unspecified,
-      placement = WindowPlacement.Fullscreen
-    )
+//    state = WindowState(
+//      size = DpSize.Unspecified,
+//      placement = WindowPlacement.Fullscreen
+//    )
   ) {
     App()
   }
