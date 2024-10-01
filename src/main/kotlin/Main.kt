@@ -22,7 +22,7 @@ fun App() {
      color = MaterialTheme.colorScheme.surface,
      modifier = Modifier.fillMaxSize()
    ) {
-     Navigator(SocketTest)
+     Navigator(TradeRowTestScreen)
    }
   }
 }
@@ -32,10 +32,10 @@ fun main() = application {
     undecorated = false,
     onCloseRequest = ::exitApplication,
     title = "Cold wars",
-//    state = WindowState(
-//      size = DpSize.Unspecified,
-//      placement = WindowPlacement.Fullscreen
-//    )
+    state = WindowState(
+      size = DpSize.Unspecified,
+      placement = WindowPlacement.Maximized
+    )
   ) {
     App()
   }

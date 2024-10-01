@@ -18,7 +18,6 @@ import androidx.compose.material3.MaterialTheme
 import androidx.compose.runtime.Composable
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.unit.dp
-import presentation.card.CardDisplay
 import model.data.TradeRowCard
 
 
@@ -50,9 +49,7 @@ fun ColumnScope.PrivateTradeRow(
     modifier = Modifier.fillMaxWidth().weight(.5f)
   ) {
     cards.forEach {
-      CardDisplay(it) {
 
-      }
     }
   }
 }

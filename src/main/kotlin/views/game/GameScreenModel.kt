@@ -9,10 +9,6 @@ import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.model.ScreenModel
 import model.controller.InGameScreenModel
-import model.data.BasicCard
-import model.data.StartingGold
-import model.data.TradeRowCard
-import model.data.TradeRowTest
 
 class GameScreenModel : ScreenModel, InGameScreenModel() {
 
@@ -21,19 +17,6 @@ class GameScreenModel : ScreenModel, InGameScreenModel() {
 
   var actionState: ActionState by mutableStateOf(ActionState.Closed)
     private set
-
-  val startingCards = listOf<BasicCard>(
-    StartingGold, StartingGold, StartingGold, StartingGold, StartingGold,
-    StartingGold, StartingGold,
-  )
-
-  val currentTradeRowCards = listOf<TradeRowCard>(
-    TradeRowTest, TradeRowTest, TradeRowTest, TradeRowTest, TradeRowTest,
-  )
-
-  val currentPrivateTradeRowCards = listOf<TradeRowCard>(
-    TradeRowTest, TradeRowTest, TradeRowTest
-  )
 
   fun closeAction() {
     actionState = ActionState.Closed

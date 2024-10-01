@@ -8,16 +8,11 @@ const val DEFAULT_IMAGE = "lizard-man.png"
 const val DEFAULT_NAME = "Name"
 
 /** Basic presentation.card with a name and image. */
-interface BasicCard {
+sealed interface BasicCard {
   val name: String
   val imageRes: String
     get() = DEFAULT_IMAGE
 }
-
-interface LoreCard {
-  val description: String
-}
-
 
 /** A presentation.card that gives victory points. */
 interface VictoryPointCard {
@@ -33,7 +28,7 @@ sealed interface TradeRowCard : BasicCard, BuyAble
 
 
 /** Cards that the users start with. */
-interface StartingCard : BasicCard, ProvidesResources {
+interface Starters : BasicCard, ProvidesResources {
   override val name: String
     get() = ""
 }
@@ -68,6 +63,12 @@ data class ItemCard(
   override val cost: Gold,
   override val resource: Resource,
 ) : TradeRowCard, AttributeCard, ProvidesResources
+
+data class StartingCard(
+  override val name: String,
+  override val imageRes: String,
+  override val resource: Resource,
+) : Starters
 
 /* ------------- Resources ------------- */
 
@@ -122,12 +123,25 @@ interface Ability {
 
 sealed interface Resource {
   data class Gold(val amount: Int) : Resource
-  data class Essence(val amount: Int, val essence: model.data.Essence) : Resource
-  data class MultiEssence(val essences: List<model.data.Essence>) : Resource {
+  data class EssenceResource(val essences: List<Essence>) : Resource {
     constructor(attributes: List<Attribute>, kek: String = "") : this(
-      attributes.map { model.data.Essence(it) }
+      attributes.map { Essence(it) }
     )
   }
+  data object None: Resource
+
+  fun getGold(): Int =
+    when (this) {
+      is Gold -> amount
+      else -> 0
+    }
+
+  fun essences(): List<Essence> =
+    when (this) {
+      is EssenceResource -> this.essences
+      else -> emptyList()
+    }
+
 }
 
 /** Passive abilities like +2 gold each turn. */

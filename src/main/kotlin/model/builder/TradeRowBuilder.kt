@@ -7,6 +7,7 @@ package model.builder
 import kotlinx.coroutines.flow.MutableStateFlow
 import model.data.TradeRowCard
 import model.data.allTradeRowCards
+import model.data.itemCards
 
 class TradeRowBuilder {
 
@@ -38,7 +39,7 @@ class TradeRowBuilder {
 
   fun reset() {
     allCards.value.clear()
-    allCards.addToFlow(allTradeRowCards)
+    allCards.addToFlow(itemCards)
     addCardsToTradeRow()
   }
 
@@ -55,7 +56,4 @@ class TradeRowBuilder {
       }
     }
   }
-
-
-
 }

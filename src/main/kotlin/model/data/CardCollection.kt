@@ -1,66 +1,31 @@
 package model.data
 
-import model.data.buildings.Barracks
-import model.data.buildings.CelestialTreasury
-import model.data.buildings.PeasantMarketplace
-import model.data.heroes.HeroDwarf
-import model.data.heroes.HeroElf
-import model.data.heroes.HeroFairy
-import model.data.heroes.HeroGnome
-import model.data.heroes.HeroGoblin
-import model.data.heroes.HeroHuman
-import model.data.heroes.HeroOrc
-import model.data.heroes.HeroTroll
-import model.data.items.CogWheel
-import model.data.items.DairyOfLostWilhelmCook
-import model.data.items.GoldDiggerSpade
-import model.data.items.Hammer
-import model.data.items.IonCannon
-import model.data.items.OilCan
-import model.data.items.Pamphlet
-import model.data.items.Pistol
-import model.data.items.Purse
-import model.data.items.RustySword
+import model.data.buildings.*
+import model.data.heroes.*
+import model.data.items.*
+import model.data.starting.startingGear
+import model.data.starting.startingGold
 
-data class AbilityConfig(
-  override val name: String,
-  override val description: String,
-) : Ability
-
-data class SimpleAbilityConfig(
-  override val types: Set<Resource>
-) : ResourceAbility
-
-object StartingGold : StartingCard {
-  override val resource: Resource = Resource.Gold(1)
-}
-
-object StartingEssenceMilitary : StartingCard {
-  override val resource: Resource = Resource.Essence(1, Essence(Attribute.Military))
-}
-
-object TradeRowTest : TradeRowCard {
-  override val name: String = "Test presentation.card"
-  override val cost: Int = 1
-}
-
-val buildingCards = listOf(
-  Barracks,  PeasantMarketplace, CelestialTreasury
+/** All building cards. */
+val buildingCards: List<BuildingCard> = listOf(
+  Barracks, PeasantMarketplace, CelestialTreasury
 )
 
-val itemCards = listOf(
-  RustySword, IonCannon, Purse, GoldDiggerSpade, Hammer, Pistol, CogWheel, OilCan,
-  DairyOfLostWilhelmCook, Pamphlet
+/** All item cards. */
+val itemCards: List<ItemCard> = listOf(
+  CannonFodder, IonCannon, Purse, GoldDiggerSpade, DesertCaravan, FragileIndustry, GeyserFarm, Gulag,
+  DairyOfLostWilhelmCook, MutualDefeat, WindFarm, SolitaryMight, DeepDwelling
 )
 
-val allTradeRowCards = listOf<TradeRowCard>(
+/** All trade row cards. */
+val allTradeRowCards: List<TradeRowCard> = listOf<TradeRowCard>(
   *buildingCards.toTypedArray(), *itemCards.toTypedArray()
 )
 
 /** All starting cards */
-val startingCardsCollection = listOf(
-  StartingEssenceMilitary, StartingGold, StartingGold, StartingGold, StartingGold,
-  StartingGold, StartingGold, StartingGold, StartingGold, StartingGold,
+val startingCardsCollection: List<Starters> = listOf(
+  startingGold, startingGold, startingGold, startingGold, startingGold,
+  startingGold, startingGold, startingGold, startingGear, startingGear, startingGold
 )
 
 /** All heroes */

@@ -1,7 +1,3 @@
-/*
- * Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
- */
-
 package presentation.field.areas
 
 import androidx.compose.foundation.layout.Column

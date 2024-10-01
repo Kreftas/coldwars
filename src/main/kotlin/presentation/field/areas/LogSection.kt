@@ -2,7 +2,7 @@
  * Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
  */
 
-package presentation.field
+package presentation.field.areas
 
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Row
