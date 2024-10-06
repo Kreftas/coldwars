@@ -26,7 +26,7 @@ import views.test.CollectionScreen
 import views.test.HeroTestScreen
 import views.pick.PickScreen
 import views.test.SocketTest
-import views.test.TradeRowTestScreen
+import views.playground.TradeRowTestScreen
 
 object MenuScreen : Screen {
 

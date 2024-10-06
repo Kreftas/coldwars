@@ -11,19 +11,13 @@ import androidx.compose.ui.unit.dp
 import presentation.components.cardArea
 
 @Composable
-fun PlayerArea(
-  discard: @Composable RowScope.() -> Unit,
+fun OppositePlayerArea(
   deck: @Composable RowScope.() -> Unit,
-  hand: @Composable RowScope.() -> Unit,
-  played: @Composable RowScope.() -> Unit,
-  status: @Composable ColumnScope.() -> Unit = {},
+  status: @Composable ColumnScope.() -> Unit,
 ) {
-
   Column(
     modifier = Modifier.fillMaxWidth()
   ) {
-
-    /* ------------------ Top row ------------------ */
 
     Row(
       verticalAlignment = Alignment.CenterVertically,
@@ -38,40 +32,11 @@ fun PlayerArea(
           .cardArea()
       )
       Row(
-        content = played,
+        content = {  },
         verticalAlignment = Alignment.CenterVertically,
         horizontalArrangement = Arrangement.Center,
         modifier = Modifier
           .weight(.7f)
-          .cardArea()
-      )
-      Row(
-        content = { },
-        modifier = Modifier
-          .weight(.2f)
-          .cardArea()
-      )
-    }
-
-    /* ------------------ Bottom row ------------------ */
-
-    Row(
-      verticalAlignment = Alignment.CenterVertically,
-      horizontalArrangement = Arrangement.SpaceBetween,
-      modifier = Modifier
-        .fillMaxWidth()
-    ) {
-      Row(
-        content = discard,
-        modifier = Modifier
-          .weight(.2f)
-          .cardArea()
-      )
-      Row(
-        horizontalArrangement = Arrangement.Center,
-        content = hand,
-        modifier = Modifier
-          .weight(.6f)
           .cardArea()
       )
       Row(
@@ -82,5 +47,29 @@ fun PlayerArea(
           .cardArea()
       )
     }
+
+//    Row(
+//      verticalAlignment = Alignment.CenterVertically,
+//      horizontalArrangement = Arrangement.spacedBy(20.dp, Alignment.CenterHorizontally),
+//      content = status,
+//      modifier = Modifier
+//        .fillMaxWidth()
+//        .border(1.dp, MaterialTheme.colorScheme.outline)
+//    )
+//
+//    Row(
+//      verticalAlignment = Alignment.CenterVertically,
+//      horizontalArrangement = Arrangement.SpaceBetween,
+//      modifier = Modifier
+//        .fillMaxWidth()
+//    ) {
+//      Row(
+//        horizontalArrangement = Arrangement.End,
+//        content = deck,
+//        modifier = Modifier
+//          .weight(.2f)
+//          .cardArea()
+//      )
+//    }
   }
 }

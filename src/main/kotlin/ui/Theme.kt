@@ -1,9 +1,11 @@
 package ui
 
+import androidx.compose.material3.LocalTextStyle
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.darkColorScheme
 import androidx.compose.material3.lightColorScheme
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.CompositionLocalProvider
 import androidx.compose.ui.graphics.Color
 import model.data.Attribute
 import model.data.Essence
@@ -147,6 +149,31 @@ fun CardTheme(
       onSurface = true_dark_onSurface,
       surfaceVariant = attributeTheme.surfaceVariant
     )
+  ) {
+//    ProvideCardTextStyle {
+      content()
+//    }
+  }
+}
+
+@Composable
+fun ProvideCardDimension(
+  cardDimension: CardDimension,
+  content: @Composable () -> Unit
+) {
+  CompositionLocalProvider(
+    LocalCardDimension provides cardDimension,
+    LocalTextStyle provides MaterialTheme.typography.bodySmall.copy(fontSize = cardDimension.fontSize)
+  ) {
+    content()
+  }
+}
+
+@Composable
+fun ProvideCardTextStyle(content: @Composable () -> Unit) {
+  val cardDimension = LocalCardDimension.current
+  CompositionLocalProvider(
+    LocalTextStyle provides MaterialTheme.typography.bodySmall.copy(fontSize = cardDimension.fontSize)
   ) {
     content()
   }

@@ -2,7 +2,7 @@
  * Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
  */
 
-package model.builder
+package model.builder.legacy
 
 import model.data.HeroAbility
 import model.data.HeroCard

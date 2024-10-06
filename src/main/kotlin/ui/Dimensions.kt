@@ -28,9 +28,9 @@ sealed interface CardDimension {
   }
 
   data object Small: CardDimension {
-    override val height: Dp = 200.dp
-    override val width: Dp = 143.dp
-    override val fontSize: TextUnit = 6.sp
+    override val height: Dp = 182.dp
+    override val width: Dp = 130.dp
+    override val fontSize: TextUnit = 20.sp
   }
 
   fun dpSize(): DpSize = DpSize(width, height)

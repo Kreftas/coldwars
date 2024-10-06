@@ -2,11 +2,13 @@
  * Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
  */
 
-package model.builder
+package model.builder.legacy
 
 import model.data.BuildingAbility
 import model.data.BuildingCard
 import kotlinx.coroutines.flow.MutableStateFlow
+import model.game.builder.addToFlow
+import model.game.builder.removeFromFlow
 
 class CityCardBuilder : CardBuilder() {
 

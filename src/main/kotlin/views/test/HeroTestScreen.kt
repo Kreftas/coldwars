@@ -5,7 +5,7 @@ import androidx.compose.runtime.getValue
 import androidx.compose.runtime.mutableStateOf
 import androidx.compose.runtime.setValue
 import cafe.adriel.voyager.core.screen.Screen
-import model.builder.HeroCardBuilder
+import model.builder.legacy.HeroCardBuilder
 import model.data.heroes.HeroDwarf
 
 object HeroTestScreen : Screen {

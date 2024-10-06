@@ -10,21 +10,22 @@ import androidx.compose.ui.window.WindowState
 import androidx.compose.ui.window.application
 import cafe.adriel.voyager.navigator.Navigator
 import ui.AppTheme
-import views.menu.MenuScreen
-import views.test.CityTestScreen
-import views.test.SocketTest
-import views.test.TradeRowTestScreen
+import ui.CardDimension
+import ui.ProvideCardDimension
+import views.playground.TradeRowTestScreen
 
 @Composable
 fun App() {
   AppTheme {
-   Surface(
-     color = MaterialTheme.colorScheme.surface,
-     modifier = Modifier.fillMaxSize()
-   ) {
-     Navigator(TradeRowTestScreen)
-   }
-  }
+//    ProvideCardDimension(CardDimension.Small) {
+      Surface(
+        color = MaterialTheme.colorScheme.surface,
+        modifier = Modifier.fillMaxSize()
+      ) {
+        Navigator(TradeRowTestScreen)
+      }
+    }
+//  }
 }
 
 fun main() = application {

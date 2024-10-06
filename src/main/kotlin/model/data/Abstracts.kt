@@ -1,5 +1,6 @@
 package model.data
 
+import model.data.Resource.*
 import java.util.concurrent.atomic.AtomicInteger
 
 /* ------------- Cards ------------- */
@@ -61,13 +62,13 @@ data class ItemCard(
   override val imageRes: String = "hat_item.png",
   override val attribute: Attribute,
   override val cost: Gold,
-  override val resource: Resource,
+  override val resources: List<Resource>,
 ) : TradeRowCard, AttributeCard, ProvidesResources
 
 data class StartingCard(
   override val name: String,
   override val imageRes: String,
-  override val resource: Resource,
+  override val resources: List<Resource>,
 ) : Starters
 
 /* ------------- Resources ------------- */
@@ -82,12 +83,16 @@ sealed interface Attribute {
   data object Military : Attribute
   data object Technology : Attribute
   data object Diplomacy : Attribute
+
+  fun asEssence(): Essence = Essence(this)
 }
 
 /** An essence with an attribute. */
 data class Essence(
   val attribute: Attribute
-)
+) {
+  fun asResource(): EssenceResource = EssenceResource(this)
+}
 
 /** Something that can be bought with gold. */
 interface BuyAble {
@@ -103,7 +108,15 @@ interface UpgradeAble {
 /* ------------- Abilities ------------- */
 
 interface ProvidesResources {
-  val resource: Resource
+  val resources: List<Resource>
+
+  fun essences(): List<Essence> = resources
+    .filterIsInstance<EssenceResource>()
+    .map { it.essences }
+
+  fun gold(): Int = resources
+    .filterIsInstance<GoldResource>()
+    .sumOf { it.amount }
 }
 
 interface ActivateAble {
@@ -122,26 +135,9 @@ interface Ability {
 }
 
 sealed interface Resource {
-  data class Gold(val amount: Int) : Resource
-  data class EssenceResource(val essences: List<Essence>) : Resource {
-    constructor(attributes: List<Attribute>, kek: String = "") : this(
-      attributes.map { Essence(it) }
-    )
-  }
+  data class GoldResource(val amount: Int) : Resource
+  data class EssenceResource(val essences: Essence) : Resource
   data object None: Resource
-
-  fun getGold(): Int =
-    when (this) {
-      is Gold -> amount
-      else -> 0
-    }
-
-  fun essences(): List<Essence> =
-    when (this) {
-      is EssenceResource -> this.essences
-      else -> emptyList()
-    }
-
 }
 
 /** Passive abilities like +2 gold each turn. */

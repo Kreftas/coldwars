@@ -6,12 +6,14 @@ import model.data.StartingCard
 val startingGold = StartingCard(
   name = "gold",
   imageRes = "Gold.png",
-  resource = Resource.Gold(1),
+  resources = listOf(
+    Resource.GoldResource(1),
+  )
 )
 
 val startingGear = StartingCard(
   name = "Gear",
   imageRes = "Gear.png",
-  resource = Resource.None,
+  resources = emptyList(),
 )
 

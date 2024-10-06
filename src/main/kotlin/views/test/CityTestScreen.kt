@@ -2,7 +2,7 @@ package views.test
 
 import androidx.compose.runtime.Composable
 import cafe.adriel.voyager.core.screen.Screen
-import model.builder.CityCardBuilder
+import model.builder.legacy.CityCardBuilder
 
 object CityTestScreen : Screen {
 

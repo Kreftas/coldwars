@@ -14,7 +14,7 @@ val VaultEngineering = ItemCard(
   imageRes = "VaultEngineering.png",
   attribute = Attribute.Technology,
   cost = 1,
-  resource = Resource.None
+  resources = emptyList()
 )
 
 val CannonFodder = ItemCard(
@@ -22,9 +22,9 @@ val CannonFodder = ItemCard(
   imageRes = "CannonFodder.png",
   attribute = Attribute.Military,
   cost = 1,
-  resource = Resource.EssenceResource(listOf(
-    Essence(Attribute.Military)
-  ))
+  resources = listOf(
+    Attribute.Military.asEssence().asResource(),
+  )
 )
 
 val DesertCaravan = ItemCard(
@@ -32,7 +32,9 @@ val DesertCaravan = ItemCard(
   imageRes = "DesertCaravan.png",
   attribute = Attribute.Military,
   cost = 1,
-  resource = Resource.Gold(1)
+  resources = listOf(
+    Resource.GoldResource(1),
+  )
 )
 
 val FragileIndustry = ItemCard(
@@ -40,7 +42,9 @@ val FragileIndustry = ItemCard(
   imageRes = "FragileIndustry.png",
   attribute = Attribute.Military,
   cost = 1,
-  resource = Resource.EssenceResource(listOf(Attribute.Military))
+  resources = listOf(
+    Attribute.Military.asEssence().asResource(),
+  )
 )
 
 val GeyserFarm = ItemCard(
@@ -48,7 +52,9 @@ val GeyserFarm = ItemCard(
   imageRes = "GeyserFarm.png",
   attribute = Attribute.Technology,
   cost = 1,
-  resource = Resource.EssenceResource(listOf(Attribute.Technology))
+  resources = listOf(
+    Attribute.Technology.asEssence().asResource(),
+  )
 )
 
 val Gulag = ItemCard(
@@ -56,7 +62,9 @@ val Gulag = ItemCard(
   imageRes = "Gulag.png",
   attribute = Attribute.Technology,
   cost = 1,
-  resource = Resource.EssenceResource(listOf(Attribute.Technology))
+  resources = listOf(
+    Attribute.Technology.asEssence().asResource(),
+  )
 )
 
 val MutualDefeat = ItemCard(
@@ -64,7 +72,9 @@ val MutualDefeat = ItemCard(
   imageRes = "MutualDefeat.png",
   attribute = Attribute.Diplomacy,
   cost = 1,
-  resource = Resource.EssenceResource(listOf(Attribute.Diplomacy))
+  resources = listOf(
+    Attribute.Diplomacy.asEssence().asResource(),
+  )
 )
 
 val SolitaryMight = ItemCard(
@@ -72,7 +82,9 @@ val SolitaryMight = ItemCard(
   imageRes = "SolitaryMight.png",
   attribute = Attribute.Diplomacy,
   cost = 1,
-  resource = Resource.EssenceResource(listOf(Attribute.Diplomacy))
+  resources = listOf(
+    Attribute.Diplomacy.asEssence().asResource(),
+  )
 )
 
 val WindFarm = ItemCard(
@@ -80,7 +92,9 @@ val WindFarm = ItemCard(
   imageRes = "WindFarm.png",
   attribute = Attribute.Diplomacy,
   cost = 1,
-  resource = Resource.EssenceResource(listOf(Attribute.Diplomacy))
+  resources = listOf(
+    Attribute.Diplomacy.asEssence().asResource(),
+  )
 )
 
 val DeepDwelling = ItemCard(
@@ -88,7 +102,9 @@ val DeepDwelling = ItemCard(
   imageRes = "DeepDwelling.png",
   attribute = Attribute.Diplomacy,
   cost = 1,
-  resource = Resource.EssenceResource(listOf(Attribute.Diplomacy))
+  resources = listOf(
+    Attribute.Diplomacy.asEssence().asResource(),
+  )
 )
 
 val DairyOfLostWilhelmCook = ItemCard(
@@ -96,11 +112,11 @@ val DairyOfLostWilhelmCook = ItemCard(
   imageRes = "CardMould-12.png",
   attribute = Attribute.Diplomacy,
   cost = 4,
-  resource = Resource.EssenceResource(listOf(
-    Attribute.Technology,
-    Attribute.Diplomacy,
-    Attribute.Diplomacy,
-  ))
+  resources = listOf(
+    Attribute.Technology.asEssence().asResource(),
+    Attribute.Diplomacy.asEssence().asResource(),
+    Attribute.Diplomacy.asEssence().asResource(),
+  )
 )
 
 val IonCannon = ItemCard(
@@ -108,11 +124,11 @@ val IonCannon = ItemCard(
   imageRes = "CardMould-13.png",
   attribute = Attribute.Military,
   cost = 4,
-  resource = Resource.EssenceResource(listOf(
-    Essence(Attribute.Military),
-    Essence(Attribute.Military),
-    Essence(Attribute.Technology),
-  ))
+  resources = listOf(
+    Attribute.Military.asEssence().asResource(),
+    Attribute.Technology.asEssence().asResource(),
+    Attribute.Technology.asEssence().asResource(),
+  )
 )
 
 
@@ -121,9 +137,10 @@ val Purse = ItemCard(
   imageRes = "CardMould-14.png",
   attribute = Attribute.Economic,
   cost = 1,
-  resource = Resource.EssenceResource(listOf(
-    Essence(Attribute.Economic)
-  ))
+  resources = listOf(
+    Attribute.Economic.asEssence().asResource(),
+    Resource.GoldResource(2)
+  )
 )
 
 val GoldDiggerSpade = ItemCard(
@@ -131,10 +148,10 @@ val GoldDiggerSpade = ItemCard(
   imageRes = "CardMould-15.png",
   attribute = Attribute.Economic,
   cost = 4,
-  resource = Resource.EssenceResource(listOf(
-    Essence(Attribute.Economic),
-    Essence(Attribute.Economic),
-    Essence(Attribute.Economic),
-  ))
+  resources = listOf(
+    Attribute.Economic.asEssence().asResource(),
+    Attribute.Economic.asEssence().asResource(),
+    Attribute.Economic.asEssence().asResource(),
+  )
 )
 

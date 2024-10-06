@@ -2,12 +2,15 @@
  * Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
  */
 
-package model.builder
+package model.builder.legacy
 
 import model.data.ComplexAbility
 import model.data.Essence
 import model.data.ItemCard
 import kotlinx.coroutines.flow.MutableStateFlow
+import model.game.builder.addToFlow
+import model.game.builder.checkCost
+import model.game.builder.removeFromFlow
 
 /** Handles adding item cards and checking the essence cost of stuff. */
 abstract class CardBuilder {
@@ -26,13 +29,13 @@ abstract class CardBuilder {
   /** Adds a cards and calculates the remaining essence. */
   fun addCard(itemCard: ItemCard) {
     itemsFlow.addToFlow(itemCard)
-    remainingEssenceFlow.addToFlow(itemCard.getEssence())
+//    remainingEssenceFlow.addToFlow(itemCard.getEssence())
   }
 
   /** Removes a cards and calculates the remaining essence. */
   fun removeCard(itemCard: ItemCard) {
     itemsFlow.removeFromFlow(itemCard)
-    remainingEssenceFlow.removeFromFlow(itemCard.getEssence())
+//    remainingEssenceFlow.removeFromFlow(itemCard.getEssence())
   }
 
   /** Updates an [ability] using [setAbility] after checking that its allowed. */

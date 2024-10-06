@@ -4,30 +4,16 @@
 
 package model.controller
 
-import model.data.HeroCard
-import model.data.TradeRowCard
+import androidx.compose.ui.graphics.Color
+
 
 data class GamePlayer(
   val name: String,
-  val heroes: Set<HeroCard> = mutableSetOf(),
-  val cards: List<TradeRowCard> = mutableListOf(),
+  val color: Color,
 ) {
   companion object {
-    fun playerOne() = GamePlayer("Player one")
-    fun playerTwo() = GamePlayer("Player two")
+    fun playerOne() = GamePlayer("Player one", Color.Blue)
+    fun playerTwo() = GamePlayer("Player two", Color.Red)
   }
 
-  fun addHero(heroCard: HeroCard): GamePlayer = copy(
-    heroes = heroes.toMutableSet().apply { add(heroCard) }
-  )
-
-  fun addCard(tradeRowCard: TradeRowCard): GamePlayer = copy(
-    cards = cards.toMutableList().apply { add(tradeRowCard) }
-  )
-
-  fun removeCard(tradeRowCard: TradeRowCard): GamePlayer = copy(
-    cards = cards.toMutableList().apply { remove(tradeRowCard) }
-  )
-
-  fun eq(other: GamePlayer): Boolean = name == other.name
 }

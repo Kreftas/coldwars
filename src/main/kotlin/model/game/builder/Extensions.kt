@@ -2,12 +2,14 @@
  * Copyright (c) Axis Communications AB, SWEDEN. All rights reserved.
  */
 
-package model.builder
+package model.game.builder
 
 import model.data.Essence
-import model.data.ItemCard
-import model.data.Resource
 import kotlinx.coroutines.flow.MutableStateFlow
+import model.game.collection.CardCollection
+import model.data.BasicCard
+
+/* ------------------ State flow list ------------------ */
 
 fun <T> MutableStateFlow<MutableList<T>>.addToFlow(element: T) {
   tryEmit((value + element).toMutableList())
@@ -31,10 +33,14 @@ fun <T> MutableStateFlow<MutableList<T>>.clear() {
   tryEmit(mutableListOf())
 }
 
+/* ------------------ Card collection ------------------ */
 
-fun ItemCard.getEssence(): List<Essence> = when (val res = resource) {
-  is Resource.EssenceResource -> res.essences
-  else -> emptyList()
+fun <T : BasicCard> List<T>.moveTo(collection: CardCollection<T>) {
+  collection.addAll(this)
+}
+
+fun <T: BasicCard> T.moveTo(collection: CardCollection<T>) {
+  collection.add(this)
 }
 
 fun List<Essence>.checkCost(list: List<Essence>): Boolean {

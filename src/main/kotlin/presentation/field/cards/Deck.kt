@@ -25,7 +25,7 @@ fun <T : BasicCard> Deck(
       Text(title)
     }
     Box {
-      cards.forEachIndexed { index, card ->
+      cards.take(5).forEachIndexed { index, card ->
         Box(modifier = Modifier.padding(start = (gap * index).dp)) {
           content(card)
         }
